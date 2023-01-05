@@ -1,6 +1,7 @@
 FROM nginx:alpine
 WORKDIR /app
-COPY . .
+
+COPY ./app/ .
 
 ADD ./nginx.conf /etc/nginx/
  
