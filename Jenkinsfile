@@ -9,9 +9,10 @@ node {
             userRemoteConfigs: [[url: "${gitURL}"]])
     }
     stage('Building image') {
-      
-        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        docker.withRegistry('https://docker.mycorp.com/', 'docker-login') {
+            dockerImage = docker.build "testApp:${env.BUILD_TAG}"
+        }
         
     }
 
-}s
+}
