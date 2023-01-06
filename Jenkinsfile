@@ -8,7 +8,7 @@ node {
         def gitURL = "https://github.com/balamood2/test-build.git"
         checkout([
             $class: 'GitSCM',
-            branches: [[name: ${env.GIT_COMMIT}]],
+            //branches: [[name: ${env.GIT_COMMIT}]],
             doGenerateSubmoduleConfigurations: false,
             extensions: [],
             submoduleCfg: [],
