@@ -9,9 +9,9 @@ node {
             userRemoteConfigs: [[url: "${gitURL}"]])
     }
     stage('Building image') {
-        docker.withRegistry('https://docker.mycorp.com/', 'docker-login') {
+       
             dockerImage = docker.build "balamood/assesment:${env.BUILD_TAG}"
-        }
+        
         
     }
 
