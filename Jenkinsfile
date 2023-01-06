@@ -1,8 +1,6 @@
 
 
 node {
-  
-
 
     stage("checkout"){
         def gitURL = "https://github.com/balamood2/test-build.git"
@@ -11,9 +9,9 @@ node {
             userRemoteConfigs: [[url: $gitURL]])
     }
     stage('Building image') {
-        script{
-            adockerImage = docker.build registry + ":$BUILD_NUMBER"
-        }
+      
+        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        
     }
 
 }s
