@@ -12,9 +12,7 @@ node {
     }
     stage('Building image') {
       steps{
-        script {
-          docker.build registry + ":env.${BUILD_NUMBER}"
-        }
+        
       }
     }
   }
