@@ -11,9 +11,7 @@ node {
             userRemoteConfigs: [[url: 'https://github.com/balamood2/test-build.git']])
     }
     stage('Building image') {
-      steps{
-        
-      }
+      
     }
 
 }
