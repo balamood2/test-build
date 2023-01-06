@@ -3,7 +3,7 @@
 node {
   
 
-  stages {
+
     stage("checkout"){
        // gitURL = "https://github.com/balamood2/test-build.git"
         checkout scmGit(
@@ -15,5 +15,5 @@ node {
         
       }
     }
-  }
+
 }
