@@ -10,7 +10,7 @@ node {
     }
     stage('Building image') {
         docker.withRegistry('https://docker.mycorp.com/', 'docker-login') {
-            dockerImage = docker.build "testApp:${env.BUILD_TAG}"
+            dockerImage = docker.build "balamood/assesment:${env.BUILD_TAG}"
         }
         
     }
