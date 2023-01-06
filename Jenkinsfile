@@ -12,7 +12,7 @@ node {
             doGenerateSubmoduleConfigurations: false,
             extensions: [],
             submoduleCfg: [],
-            userRemoteConfigs: [[url: ${gitUrl}]]])
+            userRemoteConfigs: [[url: ${gitUrl}]]]])
     }
     stage('Building image') {
       steps{
