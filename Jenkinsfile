@@ -1,6 +1,5 @@
 
-import hudson.model.*
-System.out = getBinding().out;
+
 
 node {
 
@@ -17,8 +16,8 @@ node {
             /* Remove docker image*/
             try{
                 clean = sh(script: "docker rmi \$(docker images -q -f dangling=true)", returnStdout: true)
-            }catch{
-                println("no imgae to delete")
+            }catch (Exception e){
+                echo "no imgae to delete " + e.toString()
             }
             
                 
