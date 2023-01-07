@@ -14,7 +14,7 @@ node {
             dockerImage.push()
             /* Remove docker image*/
             sh '''
-                docker rmi $$(docker images -q -f dangling=true)
+                docker rmi $$\(docker images -q -f dangling=true\)
             '''
         }
         
