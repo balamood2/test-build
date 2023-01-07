@@ -10,9 +10,9 @@ node {
     }
     stage('Building image') {
         docker.withRegistry('https://index.docker.io/v1/', 'docker') {
-            dockerImage = docker.build "assesment:${env.BUILD_ID}.push()"
+            dockerImage = docker.build "assesment:${env.BUILD_TAG}.push()"
             /* Remove docker image*/
-            sh 'docker rmi -f assesment:${env.BUILD_ID}'
+            sh 'docker rmi -f assesment:${env.BUILD_TAG}'
         }
         
     }
