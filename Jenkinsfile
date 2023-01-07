@@ -24,7 +24,7 @@ node {
         }
     }
 
-    stage "Deploy" {
+    stage ("Deploy") {
         withKubeConfig([credentialsId: 'kube_config']){
             deploy = sh(script: "kubectl describe nodes", returnStdout: true)
         }
