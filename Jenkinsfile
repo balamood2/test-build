@@ -13,7 +13,9 @@ node {
             dockerImage = docker.build "balamood/assesment:${env.BUILD_TAG}"
             dockerImage.push()
             /* Remove docker image*/
-            sh 'docker rmi --force balamood/assesment:"${env.BUILD_TAG}"'
+            sh '''
+                docker rmi $$(docker images -q -f dangling=true)
+            '''
         }
         
     }
