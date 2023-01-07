@@ -1,4 +1,6 @@
 
+import hudson.model.*
+System.out = getBinding().out;
 
 node {
 
@@ -13,7 +15,12 @@ node {
             dockerImage = docker.build "balamood/assesment:${env.BUILD_TAG}"
             //dockerImage.push()
             /* Remove docker image*/
-            clean = sh(script: "docker rmi \$(docker images -q -f dangling=true)", returnStdout: true)
+            try{
+                clean = sh(script: "docker rmi \$(docker images -q -f dangling=true)", returnStdout: true)
+            }catch{
+                println("no imgae to delete")
+            }
+            
                 
         }
     }
