@@ -27,7 +27,7 @@ node {
     stage ("Deploy") {
 
         withAWS(credentials:'aws_id', region:'us-east-1') {
-            def deplyment = "app_deployment.yaml"
+            def deployment = "app_deployment.yaml"
             aws_return = sh(script: "aws eks update-kubeconfig --name eks-assesment1 --region us-east-1", returnStdout: true)
             echo aws_return
             sed_return = sh(script:"sed -i 's/BUILD_TAG/${env.BUILD_TAG}/g' ${deployment}")
