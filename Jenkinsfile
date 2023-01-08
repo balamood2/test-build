@@ -27,7 +27,7 @@ node {
     stage ("Deploy") {
 
         withAWS(credentials:'aws_id', region:'us-east-1') {
-            aws_return = sh(script: "aws eks update-kubeconfig --name eks-assesment1 --region us-east-")
+            aws_return = sh(script: "aws eks update-kubeconfig --name eks-assesment1 --region us-east-1")
             deploy = sh(script: "kubectl describe nodes", returnStdout: true)
         }
 
