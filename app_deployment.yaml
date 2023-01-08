@@ -38,7 +38,7 @@ metadata:
 spec:
   ports:
   - name: http
-    port: 80
+    port: 443
     protocol: TCP
     targetPort: 80
   type: LoadBalancer
@@ -69,4 +69,4 @@ spec:
               service:
                 name: assesment-app-service
                 port:
-                  number: 80
+                  number: 443
