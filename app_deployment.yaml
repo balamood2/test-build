@@ -41,7 +41,7 @@ spec:
     port: 80
     protocol: TCP
     targetPort: 80
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: assesment-app
 
