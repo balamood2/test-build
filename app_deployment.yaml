@@ -41,7 +41,7 @@ spec:
     port: 8080
     protocol: TCP
     targetPort: 8080
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     aapp.kubernetes.io/name: assesment-app
 
