@@ -32,8 +32,10 @@ metadata:
   namespace: default
 spec:
   ports:
-  - port: 8080
+  - name: http
+    port: 80
     protocol: TCP
+    targetPort: 8080
   type: ClusterIP
   selector:
     app: assesment-app
@@ -48,15 +50,16 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
 spec:
   ingressClassName: alb
   rules:
-  - http:
-      paths:
-        - path: /
-          pathType: Exact
-          backend:
-            service:
-              name: assesment-app-service
-              port:
-                number: 8080
+    - http:
+        paths:
+          - path: /
+            pathType: Exact
+            backend:
+              service:
+                name: assesment-app-service
+                port:
+                  number: 80
