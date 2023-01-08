@@ -25,9 +25,11 @@ node {
     }
 
     stage ("Deploy") {
-        withKubeConfig([credentialsId: 'kube_config']){
+
+        withAWS(credentials:'aws_id', region:'us-east-1') {
             deploy = sh(script: "kubectl describe nodes", returnStdout: true)
         }
+
     }
 
 }
