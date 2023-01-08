@@ -30,7 +30,7 @@ node {
             
             aws_return = sh(script: "aws eks update-kubeconfig --name eks-assesment1 --region us-east-1", returnStdout: true)
             echo aws_return
-            sed_return = sh(scrtipt:"sed -i 's/BUILD_TAG/${env.BUILD_TAG}/g' app_deployment.yaml")
+            sed_return = sh(script:"sed -i 's/BUILD_TAG/${env.BUILD_TAG}/g' app_deployment.yaml")
             deploy = sh(script: "kubectl apply -f ${env.BUILD_TAG}", returnStdout: true)
         }
 
