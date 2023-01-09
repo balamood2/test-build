@@ -37,7 +37,7 @@ node {
     }
 
     Stage("Test Deployment"){
-        def deployedImage = sh(script: " kubectl get deployment  assesment-app -o  jsonpath=\"{.spec.template.spec.containers["0"].image}\"",
+        def deployedImage = sh(script: " kubectl get deployment  assesment-app -o  jsonpath=\"{.spec.template.spec.containers[\"0\"].image}\"",
         returnStdout: true).trim()
         
         buildID= deployedImage.split(":").[1]
