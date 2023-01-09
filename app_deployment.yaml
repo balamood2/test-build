@@ -65,7 +65,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: *.eks.amazonaws.com
+    - host: "*.eks.amazonaws.com"
       http:
         paths:
           - path: /
