@@ -67,6 +67,6 @@ spec:
             pathType: Exact
             backend:
               service:
-                name: ingress-assesment-app-service
+                name: assesment-app-service
                 port:
                   number: 80
