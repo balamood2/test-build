@@ -1,12 +1,13 @@
 
 
 
-withAWS(credentials:'aws_id', region:'us-east-1') {
-            def deployment = "app_deployment.yaml"
-            aws_return = sh(script: "aws eks update-kubeconfig --name assesment --region us-east-1", returnStdout: true)
-                echo aws_return
-    node {
 
+node {
+    withAWS(credentials:'aws_id', region:'us-east-1') {
+        def deployment = "app_deployment.yaml"
+        aws_return = sh(script: "aws eks update-kubeconfig --name assesment --region us-east-1", returnStdout: true)
+            echo aws_return
+            
         stage("checkout"){
             def gitURL = "https://github.com/balamood2/test-build.git"
             checkout scmGit(
@@ -29,7 +30,7 @@ withAWS(credentials:'aws_id', region:'us-east-1') {
         }
 
         stage ("Deploy") {
- 
+
                 sed_return = sh(script:"sed -i 's/BUILD_TAG/${env.BUILD_TAG}/g' ${deployment}")
                 deploy = sh(script: "kubectl apply -f ${deployment}", returnStdout: true)
         }
