@@ -38,9 +38,9 @@ metadata:
 spec:
   ports:
   - name: http
-    port: 8080
+    port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 80
   type: ClusterIP
   selector:
     aapp.kubernetes.io/name: assesment-app
@@ -69,4 +69,4 @@ spec:
               service:
                 name: assesment-app-service
                 port:
-                  number: 8080
+                  number: 80
