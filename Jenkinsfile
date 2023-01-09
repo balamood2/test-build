@@ -36,4 +36,21 @@ node {
 
     }
 
+    Stage("Test Deployment"){
+        def deployedImage = sh(script: " kubectl get deployment  assesment-app -o  jsonpath=\"{.spec.template.spec.containers["0"].image}\"",
+        returnStdout: true).trim()
+        
+        buildID= deployedImage.split(":").[1]
+        try{
+            if (buildId == env.BUILD_TAG){
+                currentBuild.result = 'SUCCESS'
+                return
+            }else{
+                error 'Deployment failed'
+            }
+        }catch(e){
+            throw e
+        }
+    }
+    
 }
