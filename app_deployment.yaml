@@ -32,10 +32,7 @@ metadata:
   name: assesment-app-service
   labels:
     app: assesment-app
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
-    service.beta.kubernetes.io/aws-load-balancer-type: external
-    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+
 spec:
   ports:
     - name: http
@@ -58,6 +55,7 @@ metadata:
   annotations:
    alb.ingress.kubernetes.io/scheme: internet-facing
    alb.ingress.kubernetes.io/target-type: ip
+   alb.ingress.kubernetes.io/subnets: subnet-07ecfbf20da52208d subnet-066ca6d49be496f3e
    #alb.ingress.kubernetes.io/group.name: singleIngress
    ingressclass.kubernetes.io/is-default-class: "true"
   
