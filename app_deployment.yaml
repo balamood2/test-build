@@ -20,7 +20,7 @@ spec:
         - name: assesment-app
           image: index.docker.io/balamood/assesment:BUILD_TAG
           ports:
-            - containerPort: 80
+            - containerPort: 8080
               protocol: TCP
           imagePullPolicy: Always
 
@@ -40,10 +40,10 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 80
-  type: LoadBalancer
+    targetPort: 8080
+  type: NodePort
   selector:
-    aapp.kubernetes.io/name: assesment-app
+    app.kubernetes.io/name: assesment-app
 
 
 ---
@@ -52,11 +52,13 @@ kind: Ingress
 
 metadata:
   name: assesment-ingress
-  
+  namespace: default
+  labels:
+    app: assesment-app
   annotations:
-
+    kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
-    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    alb.ingress.kubernetes.io/healthcheck-path: /healthcheck
   
 spec:
   ingressClassName: alb
