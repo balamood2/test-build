@@ -40,9 +40,9 @@ node {
         def deployedImage = sh(script: " kubectl get deployment  assesment-app -o  jsonpath=\"{.spec.template.spec.containers[\"0\"].image}\"",
         returnStdout: true).trim()
         
-        buildID= deployedImage.split(":").[1]
+        buildID= deployedImage.split(":")
         try{
-            if (buildId == env.BUILD_TAG){
+            if (buildId[1] == env.BUILD_TAG){
                 currentBuild.result = 'SUCCESS'
                 return
             }else{
