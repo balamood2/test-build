@@ -56,13 +56,15 @@ metadata:
   labels:
     app: assesment-app
   annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/healthcheck-path: /healthcheck
+   alb.ingress.kubernetes.io/scheme: internet-facing
+   alb.ingress.kubernetes.io/target-type: ip
+   alb.ingress.kubernetes.io/group.name: singleIngress
+  
   
 spec:
   ingressClassName: alb
   rules:
+    - host: *.eks.amazonaws.com
     - http:
         paths:
           - path: /
