@@ -25,6 +25,7 @@ spec:
           imagePullPolicy: Always
 
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -65,7 +66,7 @@ spec:
   ingressClassName: alb
   rules:
     - host: *.eks.amazonaws.com
-    - http:
+      http:
         paths:
           - path: /
             pathType: Prefix
