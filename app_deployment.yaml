@@ -60,10 +60,11 @@ metadata:
    alb.ingress.kubernetes.io/scheme: internet-facing
    alb.ingress.kubernetes.io/target-type: ip
    alb.ingress.kubernetes.io/group.name: singleIngress
+   ingressclass.kubernetes.io/is-default-class: "true"
   
   
 spec:
-  ingressClassName: alb
+  ingressClassName: nginx
   rules:
     - host: "7888d8ffe739d0afa99d66f4b20e7e0c.gr7.us-east-1.eks.amazonaws.com"
       http:
