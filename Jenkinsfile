@@ -7,7 +7,7 @@ node {
         def deployment = "app_deployment.yaml"
         aws_return = sh(script: "aws eks update-kubeconfig --name assesment --region us-east-1", returnStdout: true)
             echo aws_return
-            
+
         stage("checkout"){
             def gitURL = "https://github.com/balamood2/test-build.git"
             checkout scmGit(
@@ -39,7 +39,8 @@ node {
             def deployedImage = sh(script: " kubectl get deployment  assesment-app -o  jsonpath=\"{.spec.template.spec.containers[\"0\"].image}\"",
             returnStdout: true).trim()
             
-            buildID= deployedImage.split(":")
+            buildId= deployedImage.split(":")
+            echo "build id ${buildId[1]}"
             try{
                 if (buildId[1] == env.BUILD_TAG){
                     currentBuild.result = 'SUCCESS'
