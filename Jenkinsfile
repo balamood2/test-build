@@ -29,15 +29,9 @@ withAWS(credentials:'aws_id', region:'us-east-1') {
         }
 
         stage ("Deploy") {
-
-            withAWS(credentials:'aws_id', region:'us-east-1') {
-                def deployment = "app_deployment.yaml"
-                aws_return = sh(script: "aws eks update-kubeconfig --name assesment --region us-east-1", returnStdout: true)
-                echo aws_return
+ 
                 sed_return = sh(script:"sed -i 's/BUILD_TAG/${env.BUILD_TAG}/g' ${deployment}")
                 deploy = sh(script: "kubectl apply -f ${deployment}", returnStdout: true)
-            }
-
         }
 
         stage("Test Deployment"){
