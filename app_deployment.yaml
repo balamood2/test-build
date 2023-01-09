@@ -55,7 +55,6 @@ metadata:
   annotations:
    alb.ingress.kubernetes.io/scheme: internet-facing
    alb.ingress.kubernetes.io/target-type: ip
-   alb.ingress.kubernetes.io/subnets: subnet-07ecfbf20da52208d, subnet-066ca6d49be496f3e, subnet-0b8b19b5cf807baa0
    #alb.ingress.kubernetes.io/group.name: singleIngress
    ingressclass.kubernetes.io/is-default-class: "true"
   
@@ -63,8 +62,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: "7888d8ffe739d0afa99d66f4b20e7e0c.gr7.us-east-1.eks.amazonaws.com"
-      http:
+    - http:
         paths:
           - path: /
             pathType: Prefix
